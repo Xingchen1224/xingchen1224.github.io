@@ -1,8 +1,11 @@
 title: Xingchen Wang
 email: xwang95@outlook.com
-description: >-
-  Developer, Engineer, C++, OpenCV, JUCE, Tensorflow, Pytorch, AI, Computer Vision, Image Super Resolution
-github_username: xingchen1224
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+twitter_username: username
+github_username: username
 minimal_mistakes_skin: default
 search: true
 
@@ -13,7 +16,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: +800
+# timezone: CN
 
 include:
   - _pages
@@ -32,7 +35,7 @@ include:
 
 # Plugins (previously gems:)
 plugins:
-  # - jekyll-paginate
+  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
@@ -41,15 +44,15 @@ plugins:
 
 author:
   name   : "Xingchen Wang"
-  avatar : "/assets/images/xingchen-2020.jpeg"
+  avatar : "/assets/images/bio-photo.jpg"
   bio    : "Simplicity is the ultimate sophistication."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://"
-    - label: "Linkedin"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/xingchen-wang/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Xingchen1224"

@@ -8,9 +8,13 @@ tags:
   - xingchen
 ---
 
+## Python
+
 ```python
 print('hello Xingchen')
 ```
+
+## C++
 
 ```cpp
 #include <iostream>
@@ -20,6 +24,8 @@ int main() {
 }
 ```
 
+## C
+
 ```c
 #include <stdio.h>
 int main() {
@@ -27,6 +33,8 @@ int main() {
     return 0;
 }
 ```
+
+## Java
 
 ```java
 public class HelloXingchen {
@@ -36,9 +44,13 @@ public class HelloXingchen {
 }
 ```
 
+## JavaScript
+
 ```javascript
 console.log("hello Xingchen");
 ```
+
+## Rust
 
 ```rust
 fn main() {

@@ -1,2 +1,3 @@
-export JEKYLL_VERSION=4.2.0
-docker run --rm --volume="$PWD:/srv/jekyll" -p 4001:4000 jekyll/jekyll:$JEKYLL_VERSION jekyll serve
+#!/bin/bash
+# Run Pelican development server
+docker run --rm --volume="$PWD:/app" -p 8000:8000 pelican-blog pelican --listen --autoreload

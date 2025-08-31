@@ -1,7 +1,12 @@
-FROM jekyll/jekyll:4.2.0
+FROM python:3.9-slim
 
-# ENV JEKYLL_VERSION=4.2.0
+WORKDIR /app
 
-# COPY . /srv/jekyll
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# RUN jekyll build
+COPY . .
+
+EXPOSE 8000
+
+CMD ["pelican", "--listen", "--autoreload"]

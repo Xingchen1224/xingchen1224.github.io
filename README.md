@@ -1,27 +1,88 @@
-# Minimal Mistakes remote theme starter
+# Xingchen Wang's Personal Website
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+This is a personal website built with [Pelican](https://getpelican.com/), a static site generator written in Python.
 
-Contains basic configuration to get you a site with:
+## Features
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+- Personal blog posts
+- About page
+- Archive pages for posts grouped by year, category, and tag
+- Clean, minimal design
+- Fast static site generation
 
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+## Development
 
----
+### Prerequisites
 
-## Troubleshooting
+- Python 3.9+
+- pip
 
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
+### Setup
 
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Generate the site:
+```bash
+make html
+```
+
+3. Serve locally for development:
+```bash
+make devserver
+```
+
+The site will be available at http://localhost:8000
+
+### Docker Development
+
+Alternatively, you can use Docker:
+
+```bash
+docker build -t pelican-blog .
+./run.sh
+```
+
+### Publishing
+
+To publish to GitHub Pages:
+
+```bash
+make github
+```
+
+## Content Structure
+
+- `content/blog/` - Blog posts in Markdown format
+- `content/pages/` - Static pages (About, etc.)
+- `pelicanconf.py` - Development configuration
+- `publishconf.py` - Production configuration
+
+## Adding Content
+
+### New Blog Post
+
+Create a new Markdown file in `content/blog/` with metadata:
+
+```markdown
+Title: Your Post Title
+Date: 2025-01-01 12:00
+Category: blog
+Tags: tag1, tag2
+Slug: your-post-slug
+
+Your content here...
+```
+
+### New Page
+
+Create a new Markdown file in `content/pages/` with metadata:
+
+```markdown
+Title: Page Title
+Slug: page-slug
+
+Your page content here...
+```

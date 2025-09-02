@@ -7,7 +7,7 @@ classes: wide
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
-  overlay_image: /assets/images/cv-header.jpg
+  # overlay_image: /assets/images/cv-header.jpg # Image file missing
 excerpt: "Principal Developer with expertise in full-stack development, system architecture, and team leadership."
 toc: true
 toc_label: "CV Contents"

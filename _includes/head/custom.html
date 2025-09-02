@@ -1,0 +1,53 @@
+{% include_cached seo.html %}
+
+<!-- Analytics -->
+{% if site.analytics.plausible.domain %}
+  <script defer data-domain="{{ site.analytics.plausible.domain }}" src="https://plausible.io/js/plausible.js"></script>
+{% endif %}
+
+<!-- Custom CSS -->
+<style>
+  /* Professional styling overrides */
+  .masthead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .page__title {
+    color: #2c3e50;
+  }
+  
+  .author__avatar img {
+    border: 3px solid #3498db;
+  }
+  
+  .btn--primary {
+    background-color: #3498db;
+    border-color: #3498db;
+  }
+  
+  .btn--primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  
+  /* Project grid styling */
+  .grid__item {
+    transition: transform 0.3s ease;
+  }
+  
+  .grid__item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Table of contents styling */
+  .toc {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+  }
+  
+  .toc__title {
+    color: #495057;
+    font-weight: 600;
+  }
+</style>

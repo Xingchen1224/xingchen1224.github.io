@@ -10,20 +10,21 @@ technologies:
   - Docker
   - AWS
 github_url: "https://github.com/Xingchen1224/web-platform"
-demo_url: "https://demo.example.com"
+demo_url: "" # Demo URL not available
 status: "Production"
 featured: true
 header:
-  teaser: /assets/images/projects/web-platform-teaser.jpg
-  overlay_image: /assets/images/projects/web-platform-hero.jpg
+  # teaser: /assets/images/projects/web-platform-teaser.jpg # Image missing
+  # overlay_image: /assets/images/projects/web-platform-hero.jpg # Image missing
+  overlay_color: "#000"
   overlay_filter: 0.5
-gallery:
-  - url: /assets/images/projects/web-platform-dashboard.jpg
-    image_path: /assets/images/projects/web-platform-dashboard-th.jpg
-    alt: "Dashboard Interface"
-  - url: /assets/images/projects/web-platform-analytics.jpg
-    image_path: /assets/images/projects/web-platform-analytics-th.jpg
-    alt: "Analytics View"
+# gallery:
+#   - url: /assets/images/projects/web-platform-dashboard.jpg
+#     image_path: /assets/images/projects/web-platform-dashboard-th.jpg
+#     alt: "Dashboard Interface"
+#   - url: /assets/images/projects/web-platform-analytics.jpg
+#     image_path: /assets/images/projects/web-platform-analytics-th.jpg
+#     alt: "Analytics View"
 ---
 
 ## Overview
@@ -58,7 +59,7 @@ This advanced web application platform demonstrates modern full-stack developmen
 - **CloudFront** CDN for global content delivery
 - **RDS** for managed database hosting
 
-{% include gallery caption="Application screenshots showing the main dashboard and analytics interface." %}
+{# % include gallery caption="Application screenshots showing the main dashboard and analytics interface." % #}
 
 ## Performance Metrics
 

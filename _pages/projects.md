@@ -11,7 +11,7 @@ sidebar:
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
-  overlay_image: /assets/images/projects-header.jpg
+  # overlay_image: /assets/images/projects-header.jpg # Image file missing
   actions:
     - label: "View on GitHub"
       url: "https://github.com/Xingchen1224"

@@ -6,7 +6,7 @@ author_profile: true
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
-  overlay_image: /assets/images/about-header.jpg
+  # overlay_image: /assets/images/about-header.jpg # Image file missing
 excerpt: "Principal Developer passionate about building innovative solutions and mentoring the next generation of developers."
 ---
 

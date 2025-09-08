@@ -51,3 +51,86 @@
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ og_url }}">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.author.name }}",
+  "jobTitle": "Principal Developer",
+  "description": "{{ site.description }}",
+  "url": "{{ site.url }}",
+  "sameAs": [
+    "{{ site.author.links | where: 'label', 'GitHub' | map: 'url' | first }}",
+    "{{ site.author.links | where: 'label', 'LinkedIn' | map: 'url' | first }}"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Independent"
+  },
+  "knowsAbout": [
+    "Software Engineering",
+    "Web Development", 
+    "System Architecture",
+    "Team Leadership",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js"
+  ]
+}
+</script>
+
+{% if page.layout == 'post' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title }}",
+  "description": "{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}",
+  "image": "{{ og_image }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.author.avatar | absolute_url }}"
+    }
+  },
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  {% if page.last_modified_at %}
+  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",
+  {% endif %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ og_url }}"
+  }
+}
+</script>
+{% endif %}
+
+{% if page.collection == 'projects' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ page.title }}",
+  "description": "{{ page.excerpt | strip_html | normalize_whitespace }}",
+  "url": "{{ page.demo_url | default: page.github_url }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.url }}"
+  },
+  "programmingLanguage": {{ page.technologies | jsonify }},
+  "codeRepository": "{{ page.github_url }}",
+  "applicationCategory": "Developer Tool"
+}
+</script>
+{% endif %}

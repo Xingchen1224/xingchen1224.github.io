@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+Sitemap: {{ site.url }}/sitemap.xml
+
+# Performance and SEO optimization
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+# Block access to admin and development files
+Disallow: /vendor/
+Disallow: /.bundle/
+Disallow: /_site/
+Disallow: /.git/
+Disallow: /.jekyll-cache/

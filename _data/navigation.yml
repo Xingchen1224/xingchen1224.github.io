@@ -7,6 +7,8 @@ main:
     url: /cv/
   - title: "About"
     url: /about/
+  - title: "Search"
+    url: /search/
 
 projects:
   - title: "All Projects"

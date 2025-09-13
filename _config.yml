@@ -14,7 +14,7 @@ repository: "Xingchen1224/xingchen1224.github.io"
 # teaser: "/assets/images/teaser-default.jpg" # path of fallback teaser image (file missing)
 # logo: "/assets/images/logo.png" # path of logo image to display in the masthead (file missing)
 # og_image: "/assets/images/social-preview.jpg" # Open Graph default image (file missing)
-masthead_title: "" # overrides the website title displayed in the masthead, use " " for no title
+masthead_title: " " # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs: true # true, false (default)
 words_per_minute: 200
 
@@ -107,13 +107,13 @@ whitelist:
   - jekyll-include-cache
   - jekyll-seo-tag
 
-# Archives
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
+# Archives - Removed
+# category_archive:
+#   type: liquid
+#   path: /categories/
+# tag_archive:
+#   type: liquid
+#   path: /tags/
 
 # HTML Compression
 compress_html:

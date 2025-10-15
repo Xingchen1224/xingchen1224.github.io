@@ -1,19 +1,7 @@
 main:
   - title: "Posts"
     url: /posts/
-  - title: "Projects"
-    url: /projects/
   - title: "CV"
     url: /cv/
   - title: "About"
     url: /about/
-
-projects:
-  - title: "All Projects"
-    url: /projects/
-  - title: "Web Development"
-    url: /projects/category/web/
-  - title: "Data Science"
-    url: /projects/category/data-science/
-  - title: "Open Source"
-    url: /projects/category/opensource/

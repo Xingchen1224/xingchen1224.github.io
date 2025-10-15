@@ -5,7 +5,7 @@ layout: single
 author_profile: true
 classes: wide
 header:
-  overlay_color: "#000"
+  overlay_color: "#667eea"
   overlay_filter: "0.5"
   # overlay_image: /assets/images/cv-header.jpg # Image file missing
 excerpt: "Principal Developer with expertise in full-stack development, system architecture, and team leadership."

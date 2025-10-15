@@ -16,7 +16,7 @@ featured: true
 header:
   # teaser: /assets/images/projects/web-platform-teaser.jpg # Image missing
   # overlay_image: /assets/images/projects/web-platform-hero.jpg # Image missing
-  overlay_color: "#000"
+  overlay_color: "#667eea"
   overlay_filter: 0.5
 # gallery:
 #   - url: /assets/images/projects/web-platform-dashboard.jpg

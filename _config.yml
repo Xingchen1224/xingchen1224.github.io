@@ -1,7 +1,6 @@
 title: Xingchen Wang
-email: xwang95@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Principal Developer - Building innovative solutions with clean, scalable code
+  Image Algorithms R&D / Technical Project Leader
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xingchen1224.github.io" # the base hostname & protocol for your site
 
@@ -130,13 +129,9 @@ collections:
 author:
   name   : "Xingchen Wang"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Principal Developer passionate about clean code, scalable systems, and innovative solutions."
+  bio    : "Image Algorithms R&D / Technical Project Leader"
   location: "Global"
-  email: "xwang95@outlook.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:xwang95@outlook.com"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/xingchen-wang"

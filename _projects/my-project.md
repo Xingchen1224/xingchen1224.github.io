@@ -1,5 +1,5 @@
 ---
-title: "Advanced Web Application Platform"
+title: "Mock Project Data"
 excerpt: "A full-stack web application built with React, Node.js, and PostgreSQL, featuring real-time collaboration and advanced analytics."
 category: web
 technologies:
@@ -29,7 +29,7 @@ header:
 
 ## Overview
 
-This advanced web application platform demonstrates modern full-stack development practices, implementing real-time collaboration features and sophisticated data analytics. Built with scalability and performance in mind, it serves thousands of daily active users.
+Mock for test
 
 ## Key Features
 

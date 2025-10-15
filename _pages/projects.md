@@ -9,7 +9,7 @@ author_profile: false
 sidebar:
   nav: "projects"
 header:
-  overlay_color: "#000"
+  overlay_color: "#667eea"
   overlay_filter: "0.5"
   # overlay_image: /assets/images/projects-header.jpg # Image file missing
   actions:

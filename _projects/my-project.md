@@ -59,7 +59,7 @@ This advanced web application platform demonstrates modern full-stack developmen
 - **CloudFront** CDN for global content delivery
 - **RDS** for managed database hosting
 
-{# % include gallery caption="Application screenshots showing the main dashboard and analytics interface." % #}
+{% comment %}{% include gallery caption="Application screenshots showing the main dashboard and analytics interface." %}{% endcomment %}
 
 ## Performance Metrics
 

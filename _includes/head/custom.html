@@ -323,4 +323,154 @@
     background-color: #667eea;
     color: #fff;
   }
+  
+  /* Link improvements */
+  .page__content a:not(.btn) {
+    color: #667eea;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .page__content a:not(.btn):hover {
+    color: #5568d3;
+    border-bottom-color: #667eea;
+  }
+  
+  /* Card-like sections for better content organization */
+  .page__content > h2:first-of-type {
+    margin-top: 1em;
+  }
+  
+  /* Featured content box */
+  .featured-box {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5em;
+    margin: 2em 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* List improvements */
+  .page__content ul:not(.toc__menu) li,
+  .page__content ol li {
+    position: relative;
+    padding-left: 0.5em;
+  }
+  
+  .page__content ul:not(.toc__menu) > li::marker {
+    color: #667eea;
+  }
+  
+  /* Post meta information styling */
+  .page__meta {
+    font-size: 0.9em;
+  }
+  
+  .page__meta .fa,
+  .page__meta .fas,
+  .page__meta .far {
+    color: #667eea;
+  }
+  
+  /* Archive item improvements */
+  .archive__item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .archive__item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+  }
+  
+  /* Technology tags or category badges */
+  .page__taxonomy {
+    margin-top: 1em;
+  }
+  
+  .page__taxonomy-item {
+    display: inline-block;
+    margin: 0.25em 0.5em 0.25em 0;
+    padding: 0.4em 0.8em;
+    background-color: #e9ecef;
+    color: #495057;
+    font-size: 0.85em;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+  }
+  
+  .page__taxonomy-item:hover {
+    background-color: #667eea;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Notice/alert boxes (info, warning, etc.) */
+  .notice {
+    margin: 2em 0;
+    padding: 1.5em;
+    border-radius: 8px;
+    border-left: 4px solid;
+  }
+  
+  .notice--primary {
+    background-color: rgba(102, 126, 234, 0.1);
+    border-left-color: #667eea;
+  }
+  
+  .notice--info {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left-color: #3498db;
+  }
+  
+  .notice--success {
+    background-color: rgba(39, 174, 96, 0.1);
+    border-left-color: #27ae60;
+  }
+  
+  .notice--warning {
+    background-color: rgba(243, 156, 18, 0.1);
+    border-left-color: #f39c12;
+  }
+  
+  /* Sidebar improvements */
+  .sidebar {
+    opacity: 0.95;
+  }
+  
+  .sidebar .author__content {
+    margin-top: 0.5em;
+  }
+  
+  /* Search improvements */
+  .search-content .search-input {
+    border: 2px solid #e9ecef;
+    border-radius: 24px;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    transition: all 0.3s ease;
+  }
+  
+  .search-content .search-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+  }
+  
+  /* Back to top button (if theme supports) */
+  .back-to-top {
+    background-color: #667eea;
+    transition: all 0.3s ease;
+  }
+  
+  .back-to-top:hover {
+    background-color: #5568d3;
+    transform: translateY(-2px);
+  }
 </style>

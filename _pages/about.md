@@ -3,9 +3,6 @@ permalink: /about/
 title: "About Xingchen Wang"
 layout: single
 author_profile: true
-header:
-  overlay_color: "#667eea"
-  overlay_filter: "0.5"
 excerpt: "Image Algorithms R&D · Technical Project Leader"
 toc: true
 toc_label: "On This Page"
@@ -39,31 +36,24 @@ cutting-edge research into reliable, production-ready software.
 - Cross-disciplinary collaboration (hardware, optics, software, product)
 
 **Tools & Technologies**
-- Languages: C++, Python, MATLAB — and others as the problem demands
-- Frameworks: OpenCV, PyTorch, and standard imaging/vision toolchains
-- Version control, CI/CD, and modern software engineering practices
+- Languages: C++, Python, Shell
+- Build & tooling: CMake, Git
+- Frameworks & libraries: OpenCV, JUCE
 
 ---
 
-## Background
+## Open Source
 
-<!-- ✏️  Replace the text below with your own story. The structure is provided as a starting point. -->
+I maintain and share public projects on [GitHub](https://github.com/Xingchen1224),
+including tooling to simplify OpenCV builds, reusable JUCE components, and a CMake
+project template for C++. See the [Projects page](/projects/) for highlights.
 
-My path into imaging and computer vision grew from a combination of academic curiosity
-and hands-on engineering. I have worked on projects spanning the full imaging stack —
-from pixel-level algorithm design through to system integration and field validation —
-and I have led teams responsible for delivering these systems to end users.
-
-Throughout my career I have valued rigorous engineering craftsmanship, a strong feedback
-loop between theory and experiment, and clear communication across team boundaries.
-
----
-
-## What I'm Working On
-
-- Advancing algorithm R&D in image quality and computational photography
-- Improving how engineering teams structure and track technical work
-- Writing about topics in imaging, computer vision, and engineering leadership
+<!--
+  TO THE SITE OWNER: a personal "Background" narrative was intentionally omitted
+  rather than invented. LinkedIn (linkedin.com) is blocked in the build
+  environment, so your biography could not be read from a verifiable source.
+  Add your own story here when ready.
+-->
 
 ---
 

@@ -3,82 +3,57 @@ title: "Projects"
 permalink: /projects/
 layout: single
 author_profile: true
-header:
-  overlay_color: "#667eea"
-  overlay_filter: "0.5"
-excerpt: "Selected personal, open-source, and research projects."
+excerpt: "Selected open-source work in image algorithms, C++ tooling, and audio components."
 toc: true
 toc_label: "Projects"
 toc_icon: "code"
 ---
 
-> **Note to site owner:** The project entries below are starter/placeholder examples.
-> Replace them with your actual projects. Each entry includes the structure you can reuse.
+A selection of public, open-source projects. For the complete and most current list,
+see my [GitHub profile](https://github.com/Xingchen1224).
 
 ---
 
-## Image Processing & Computer Vision
+## Image & Vision Tooling
 
-### Image Quality Analysis Toolkit
-*Python · OpenCV · NumPy*
+### opencv_build_as_you_go
+*Shell · CMake · OpenCV*
 
-A command-line and library toolkit for evaluating image quality metrics including PSNR,
-SSIM, BRISQUE, and custom perceptual metrics. Designed to plug into automated image
-pipeline testing workflows.
+Scripts and configuration to build [OpenCV](https://opencv.org/) as simply as possible,
+streamlining the setup of the library for image-processing and computer-vision work.
 
-**Key features:**
-- Batch evaluation across large image datasets
-- Side-by-side visual comparison output
-- Extensible metric plugin interface
-
-[View on GitHub](https://github.com/Xingchen1224){: .btn .btn--primary}
+[View on GitHub](https://github.com/Xingchen1224/opencv_build_as_you_go){: .btn .btn--primary}
 
 ---
 
-### Computational Photography Experiments
-*Python · PyTorch · Camera RAW*
+## Audio & Application Components
 
-A collection of experiments in computational photography — HDR merging, denoising with
-learned priors, and lens distortion correction. Accompanies a series of technical blog
-posts documenting the methodology and results.
+### JUCE-Extra-Components
+*C++ · JUCE*
 
-**Topics covered:**
-- Burst photography and alignment
-- Deep image denoising (comparison of classical vs. learned approaches)
-- RAW-to-RGB colour pipeline tuning
+Additional reusable UI and application components built on top of the
+[JUCE](https://juce.com/) framework for cross-platform audio and desktop applications.
 
-<!-- ✏️  Add a real link when available -->
+[View on GitHub](https://github.com/Xingchen1224/JUCE-Extra-Components){: .btn .btn--primary}
 
 ---
 
-## Tools & Utilities
+## Developer Tooling
 
-### Dev Environment Dotfiles & Toolchain
-*Shell · Python · CMake*
+### project_template_cpp
+*C++ · CMake*
 
-Personal configuration files and bootstrap scripts for a reproducible C++/Python
-development environment across macOS and Linux. Includes CMake presets, linting
-configs, and a lightweight task runner.
+A CMake-based project template for bootstrapping new C++ projects quickly with a
+consistent, reproducible structure.
 
-<!-- ✏️  Add a real link when available -->
-
----
-
-## Open-Source Contributions
-
-<!-- ✏️  List any upstream contributions to open-source projects you have made. -->
-
-| Project | Contribution | Year |
-|---------|-------------|------|
-| *[Project name]* | *[Brief description of contribution]* | *[Year]* |
+[View on GitHub](https://github.com/Xingchen1224/project_template_cpp){: .btn .btn--primary}
 
 ---
 
 ## Research & Writing
 
-Technical articles and notes are published on the [Posts](/posts/) page. Topics include
-algorithm design, engineering practices, and observations from imaging R&D.
+Technical articles and notes are published on the [Posts](/posts/) page.
 
 ---
 
-*More projects to be added. Check back or follow on [GitHub](https://github.com/Xingchen1224).*
+*More projects on [GitHub](https://github.com/Xingchen1224).*

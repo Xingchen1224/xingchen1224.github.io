@@ -4,106 +4,80 @@ permalink: /cv/
 layout: single
 author_profile: true
 classes: wide
-header:
-  overlay_color: "#667eea"
-  overlay_filter: "0.5"
 excerpt: "Image Algorithms R&D · Technical Project Leader"
 toc: true
 toc_label: "CV Contents"
 toc_icon: "file-alt"
 ---
 
-> **Note to site owner:** Sections marked with ✏️ contain placeholder content.
-> Replace them with your actual details before publishing.
-
----
-
 ## Summary
 
-Experienced technical leader and algorithm engineer specialising in image processing,
-computer vision, and computational imaging. Proven track record of leading R&D teams
-through the full lifecycle of algorithm development — from concept and prototyping to
-system integration and production deployment. Comfortable at both the whiteboard and the
-code editor, with a strong emphasis on engineering quality and clear communication.
+Image Algorithms R&D engineer and Technical Project Leader working across image
+processing, computer vision, and computational imaging. I focus on taking algorithms
+from prototype to production-quality software, and on leading the engineering work that
+turns research into reliable systems.
 
 ---
 
-## Professional Experience
+## Technical Skills
 
-<!-- ✏️  Replace each role below with your real work history. -->
+### Image & Vision
+`Image Algorithms`  `Image Processing`  `Computer Vision`  `Computational Imaging`
+`OpenCV`
 
-### [Your Most Recent Role Title]
-**[Company Name]** · *[Location or Remote]* · [Start Year] – Present
+### Languages & Tooling
+`C++`  `Python`  `Shell`  `CMake`  `Git`
 
-- Led a team of [N] engineers working on [imaging / vision / algorithm] problems
-- Designed and delivered [a key system or feature] that [achieved an outcome]
-- Drove technical roadmap and architecture decisions for [a product or platform]
-- Collaborated with cross-functional partners (hardware, product, QA) to ship [X]
+### Frameworks & Domains
+`JUCE`  `Cross-platform C++`  `Build systems & tooling`
 
----
-
-### [Previous Role Title]
-**[Company Name]** · *[Location]* · [Start Year] – [End Year]
-
-- Developed and optimised image processing algorithms for [use case]
-- [Another key contribution relevant to the role]
-- [Technical achievement or project outcome]
+### Leadership
+`Technical Project Leadership`  `R&D Planning`  `Code Review`  `System Design`
 
 ---
 
-## Skills
+## Selected Open-Source Projects
 
-### Image & Vision Algorithms
-`Image Quality`  `ISP / RAW Processing`  `Computational Photography`
-`Computer Vision`  `Object Detection / Segmentation`  `Stereo & Depth`
-`Image Enhancement`  `Noise Reduction`  `HDR`
+Verifiable public work from [github.com/Xingchen1224](https://github.com/Xingchen1224):
 
-### Machine Learning & AI
-`Deep Learning (PyTorch)`  `CNN Architecture`  `Model Training & Evaluation`
-`Data Pipeline Design`  `Inference Optimisation`
+- **[opencv_build_as_you_go](https://github.com/Xingchen1224/opencv_build_as_you_go)** —
+  scripts to build OpenCV as simply as possible. *(Shell · CMake)*
+- **[JUCE-Extra-Components](https://github.com/Xingchen1224/JUCE-Extra-Components)** —
+  additional reusable components built on the JUCE framework. *(C++)*
+- **[project_template_cpp](https://github.com/Xingchen1224/project_template_cpp)** —
+  a CMake project template for bootstrapping C++ projects. *(C++ · CMake)*
 
-### Software Engineering
-`C++`  `Python`  `MATLAB`  `OpenCV`  `CMake`
-`Git`  `CI/CD`  `Code Review`  `System Design`
+See the [Projects page](/projects/) for more detail.
 
-### Leadership & Project Management
-`Technical Team Leadership`  `R&D Planning`  `Cross-functional Collaboration`
-`Agile / Scrum`  `Technical Writing`  `Mentoring`
+<!--
+  ============================================================================
+  TO THE SITE OWNER
+  ----------------------------------------------------------------------------
+  The sections below (Professional Experience, Education, Publications,
+  Languages) could NOT be auto-filled: LinkedIn (linkedin.com) is blocked in
+  the build environment, so your profile could not be read, and no other
+  verifiable public source for your employment history or education was found.
 
----
+  To avoid publishing fabricated ("mock") details, these sections are left as
+  this comment block instead of invented content. Paste your real information
+  below (uncomment and edit), or provide the details and they can be filled in.
 
-## Education
+  ## Professional Experience
+  ### <Role Title>
+  **<Company>** · <Location> · <Start> – <End>
+  - <Responsibility / achievement>
 
-<!-- ✏️  Replace with your actual educational background. -->
+  ## Education
+  ### <Degree>
+  **<University>** · <Country> · <Year>
 
-### [Degree Title, e.g. M.Sc. Computer Science or B.Eng. Electrical Engineering]
-**[University Name]** · *[Country]* · [Graduation Year]
+  ## Publications & Talks
+  - <Title> — <Venue>, <Year>
 
-- Focus area: [e.g. Image Processing / Computer Vision / Signal Processing]
-- Dissertation / thesis: *[Title or brief description]* *(optional)*
-
----
-
-## Selected Projects & Contributions
-
-<!-- ✏️  Add notable projects, open-source contributions, or research outputs. -->
-See the [Projects page](/projects/) for highlights of personal and open-source work.
-
----
-
-## Publications & Talks
-
-<!-- ✏️  Add any papers, conference presentations, or technical blog posts. -->
-
-- *[Paper or talk title]* — [Venue / Journal], [Year] *(placeholder — replace or remove)*
-
----
-
-## Languages
-
-<!-- ✏️  Update as appropriate. -->
-- English — Professional working proficiency
-- [Other language] — [Proficiency level]
+  ## Languages
+  - <Language> — <Proficiency>
+  ============================================================================
+-->
 
 ---
 
@@ -113,5 +87,3 @@ See the [Projects page](/projects/) for highlights of personal and open-source w
 |---|---|
 | **GitHub** | [github.com/Xingchen1224](https://github.com/Xingchen1224) |
 | **LinkedIn** | [linkedin.com/in/xingchen-wang](https://www.linkedin.com/in/xingchen-wang) |
-
-*References available upon request.*

@@ -56,8 +56,8 @@ Edit `_config.yml` — update `name`, `description`, `url`, `author`, and social
 
 ### Pages
 - **About** — `_pages/about.md`
-- **CV** — `_pages/cv.md` (sections marked with ✏️ are placeholders)
-- **Projects** — `_pages/projects.md` (starter entries — replace with your own)
+- **CV** — `_pages/cv.md` (Experience/Education are left as HTML comments to fill in with real details)
+- **Projects** — `_pages/projects.md` (links to real GitHub repositories)
 
 ### Blog Posts
 Add Markdown files to `_posts/` following the naming convention `YYYY-MM-DD-title.md`.

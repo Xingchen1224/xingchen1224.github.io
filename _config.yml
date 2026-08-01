@@ -29,13 +29,6 @@ social:
     - "https://linkedin.com/in/xingchen-wang"
     - "https://github.com/Xingchen1224"
 
-# Site Search
-search: true
-search_full_content: true
-search_provider: lunr
-lunr:
-  search_within_pages: true
-
 # Analytics
 analytics:
   provider: false # false (default), "google", "google-universal", "google-gtag", "custom"

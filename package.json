@@ -1,0 +1,18 @@
+{
+  "name": "xingchen1224-github-io",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Personal website of Xingchen Wang — built with Astro.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.6"
+  }
+}

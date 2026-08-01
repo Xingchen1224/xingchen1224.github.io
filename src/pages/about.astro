@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, SOCIAL } from '../consts';
+---
+
+<BaseLayout title="About" description="Image Algorithms R&D · Technical Project Leader">
+  <div class="wrap wrap--narrow" style="padding-top:3rem;">
+    <div class="author-card" data-reveal>
+      <img class="author-card__avatar" src={SITE.author.avatar} alt={SITE.author.name} width="84" height="84" />
+      <div>
+        <p class="author-card__name">{SITE.author.name}</p>
+        <p class="author-card__bio">{SITE.author.bio}</p>
+        <div class="author-card__links">
+          <a href={SOCIAL.github} target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href={SOCIAL.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+      <h1 style="font-size:2.2rem;">About {SITE.author.name}</h1>
+
+      <h2>Professional Profile</h2>
+      <p>
+        I am a technical leader specialising in <strong>image algorithms research and development</strong>
+        and <strong>computer vision engineering</strong>. My work sits at the intersection of rigorous
+        algorithmic thinking and practical product delivery — designing imaging pipelines, directing R&amp;D
+        initiatives, and helping teams ship high-quality visual systems at scale.
+      </p>
+      <p>
+        I am driven by hard problems in computational imaging and enjoy the challenge of turning
+        cutting-edge research into reliable, production-ready software.
+      </p>
+
+      <h2>Areas of Expertise</h2>
+      <p><strong>Core Technical</strong></p>
+      <ul>
+        <li>Computational imaging &amp; image quality algorithms</li>
+        <li>Computer vision and visual perception systems</li>
+        <li>Image processing pipeline architecture (RAW, ISP, post-processing)</li>
+        <li>Deep learning for imaging and vision tasks</li>
+      </ul>
+      <p><strong>Engineering &amp; Leadership</strong></p>
+      <ul>
+        <li>Technical project leadership and cross-functional team management</li>
+        <li>Algorithm research to production roadmaps</li>
+        <li>Code review, system design, and engineering quality practices</li>
+        <li>Cross-disciplinary collaboration (hardware, optics, software, product)</li>
+      </ul>
+      <p><strong>Tools &amp; Technologies</strong></p>
+      <ul>
+        <li>Languages: C++, Python, Shell</li>
+        <li>Build &amp; tooling: CMake, Git</li>
+        <li>Frameworks &amp; libraries: OpenCV, JUCE</li>
+      </ul>
+
+      <h2>Open Source</h2>
+      <p>
+        I maintain and share public projects on <a href={SOCIAL.github} target="_blank" rel="noopener">GitHub</a>,
+        including tooling to simplify OpenCV builds, reusable JUCE components, and a CMake project template
+        for C++.
+      </p>
+
+      <h2>Let's Connect</h2>
+      <p>
+        The best ways to reach me are via
+        <a href={SOCIAL.linkedin} target="_blank" rel="noopener">LinkedIn</a> or
+        <a href={SOCIAL.github} target="_blank" rel="noopener">GitHub</a>. I'm always happy to discuss
+        imaging algorithms, open-source projects, or opportunities to collaborate.
+      </p>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+import { NAV, SITE } from '../consts';
+
+const pathname = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label={`${SITE.name} — home`}>
+      <span class="site-brand__mark">&#9670;</span>
+      <span class="site-brand__name">{SITE.name}</span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >&#9776;</button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      {NAV.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.title}
+        </a>
+      ))}
+    </nav>
+
+    <div class="xw-settings" data-settings>
+      <button
+        class="xw-settings__btn"
+        type="button"
+        aria-label="Theme settings"
+        aria-expanded="false"
+        title="Theme settings"
+      >&#9881;</button>
+      <div class="xw-settings__panel" role="dialog" aria-label="Site settings">
+        <div class="xw-group">
+          <span class="xw-group__label">Appearance</span>
+          <div class="xw-seg" data-role="theme">
+            <button type="button" data-val="light" aria-pressed="false"><span>&#9728;</span><span>Light</span></button>
+            <button type="button" data-val="dark" aria-pressed="false"><span>&#9789;</span><span>Dark</span></button>
+          </div>
+        </div>
+        <div class="xw-group">
+          <span class="xw-group__label">Accent</span>
+          <div class="xw-swatches" data-role="accent">
+            <button type="button" class="xw-swatch" data-val="cyan" style="background:#22d3ee" aria-label="cyan" aria-pressed="false"></button>
+            <button type="button" class="xw-swatch" data-val="blue" style="background:#2563eb" aria-label="blue" aria-pressed="false"></button>
+            <button type="button" class="xw-swatch" data-val="emerald" style="background:#059669" aria-label="emerald" aria-pressed="false"></button>
+            <button type="button" class="xw-swatch" data-val="violet" style="background:#7c3aed" aria-label="violet" aria-pressed="false"></button>
+            <button type="button" class="xw-swatch" data-val="amber" style="background:#d97706" aria-label="amber" aria-pressed="false"></button>
+            <button type="button" class="xw-swatch" data-val="rose" style="background:#e11d48" aria-label="rose" aria-pressed="false"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

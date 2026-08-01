@@ -345,6 +345,46 @@
   ::selection { background: var(--ink); color: #fff; }
   ::-moz-selection { background: var(--ink); color: #fff; }
 
+  /* ---- Photo gallery (Flickr embeds) -------------------------------- */
+  .expo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75em;
+    margin: 1.75em 0 2.5em;
+  }
+
+  .expo-gallery__item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg-subtle);
+    aspect-ratio: 3 / 2;
+  }
+
+  /* Fill the tile whether the raw <img> or the embedr-generated markup is shown */
+  .expo-gallery__item img,
+  .expo-gallery__item .flickr-embed-photo,
+  .expo-gallery__item > a,
+  .expo-gallery__item .flickr-embed-container {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+
+  .expo-gallery__item img,
+  .expo-gallery__item .flickr-embed-photo {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .expo-gallery__item:hover img,
+  .expo-gallery__item:hover .flickr-embed-photo { transform: scale(1.04); }
+
+  @media (max-width: 600px) {
+    .expo-gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  }
+
   /* ---- Responsive --------------------------------------------------- */
   @media (max-width: 768px) {
     .page__content { font-size: 1em; }

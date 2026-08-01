@@ -9,7 +9,7 @@
      (Inter) and a monospace for code / geeky accents (JetBrains Mono). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Set theme early to avoid a flash of the wrong palette -->
 <script>
@@ -17,11 +17,9 @@
     try {
       var t = localStorage.getItem('xw-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       var a = localStorage.getItem('xw-accent') || 'graphite';
-      var l = localStorage.getItem('xw-lang') || 'en';
       var r = document.documentElement;
       r.setAttribute('data-theme', t);
       r.setAttribute('data-accent', a);
-      r.setAttribute('data-lang', l);
     } catch (e) {}
   })();
 </script>
@@ -51,8 +49,8 @@
     --accent-soft:     rgba(26, 26, 26, 0.08);
     --accent-underline: #c9c9cd;
 
-    --font-body: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-display: "Space Grotesk", "Inter", "Noto Sans SC", sans-serif;
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-display: "Space Grotesk", "Inter", sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
     --shadow-card: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
@@ -102,8 +100,6 @@
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.25s ease, color 0.25s ease;
   }
-
-  [data-lang="zh"] body { --font-body: "Noto Sans SC", "Inter", sans-serif; }
 
   /* ---- Masthead (top navigation) ------------------------------------ */
   .masthead {
@@ -329,28 +325,27 @@
   @media (max-width: 600px) { .expo-gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
 
   /* =====================================================================
-     Floating control dock (theme / accent / language)
+     Header settings control (theme + accent), mounted in the masthead
      ===================================================================== */
-  .xw-dock { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 9999; font-family: var(--font-body); }
-  .xw-dock__toggle {
-    width: 46px; height: 46px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--accent); color: var(--accent-contrast);
-    border: 0; cursor: pointer; box-shadow: var(--shadow-card);
-    font-size: 1.15rem; line-height: 1; transition: transform 0.2s ease;
+  .xw-settings { position: relative; display: flex; align-items: center; margin-left: auto; }
+  .xw-settings__btn {
+    width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--ink-soft); border: 1px solid transparent; cursor: pointer;
+    font-size: 1.05rem; line-height: 1; transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
   }
-  .xw-dock__toggle:hover { transform: rotate(30deg) scale(1.05); }
-  .xw-dock__panel {
-    position: absolute; right: 0; bottom: 58px; width: 232px;
+  .xw-settings__btn:hover,
+  .xw-settings.open .xw-settings__btn { color: var(--ink); background: var(--bg-subtle); border-color: var(--line); }
+  .xw-settings__panel {
+    position: absolute; top: calc(100% + 10px); right: 0; width: 232px;
     background: var(--bg-elev); border: 1px solid var(--line); border-radius: 12px;
-    box-shadow: var(--shadow-card); padding: 0.9rem; opacity: 0; visibility: hidden;
-    transform: translateY(8px) scale(0.98); transform-origin: bottom right;
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    box-shadow: var(--shadow-card); padding: 0.9rem; z-index: 1000;
+    opacity: 0; visibility: hidden; transform: translateY(-6px) scale(0.98); transform-origin: top right;
+    transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
   }
-  .xw-dock.open .xw-dock__panel { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-  .xw-dock__group { margin-bottom: 0.85rem; }
-  .xw-dock__group:last-child { margin-bottom: 0; }
-  .xw-dock__label {
+  .xw-settings.open .xw-settings__panel { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+  .xw-group { margin-bottom: 0.85rem; }
+  .xw-group:last-child { margin-bottom: 0; }
+  .xw-group__label {
     font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--ink-faint); margin-bottom: 0.45rem; display: block;
   }
@@ -371,7 +366,7 @@
   .xw-swatch[aria-pressed="true"]:after {
     content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 1px solid var(--accent);
   }
-  @media (max-width: 600px) { .xw-dock { right: 0.7rem; bottom: 0.7rem; } }
+  @media (max-width: 600px) { .xw-settings__panel { right: -0.25rem; } }
 
   /* =====================================================================
      CV page — custom "geek-professional" layout
@@ -412,9 +407,13 @@
     font-size: 0.86rem; padding: 0.55rem 1rem; border-radius: 8px; text-decoration: none; transition: all 0.15s ease;
     border: 1px solid var(--line);
   }
-  .cv-btn--solid { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
-  .cv-btn--solid:hover { background: var(--accent-strong); border-color: var(--accent-strong); transform: translateY(-1px); }
+  /* Primary (GitHub): always high-contrast and legible regardless of accent/theme */
+  .cv-btn--solid { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .cv-btn--solid i { color: var(--bg); }
+  .cv-btn--solid:hover { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); transform: translateY(-1px); }
+  .cv-btn--solid:hover i { color: var(--accent-contrast); }
   .cv-btn--ghost { background: transparent; color: var(--ink); }
+  .cv-btn--ghost i { color: var(--accent); }
   .cv-btn--ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
   /* Section headers */
@@ -445,22 +444,6 @@
   }
   .cv-tag:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
-  /* Project cards */
-  .cv-projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-  .cv-proj {
-    display: flex; flex-direction: column; background: var(--bg-elev); border: 1px solid var(--line);
-    border-radius: 12px; padding: 1.25rem; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .cv-proj:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-card); }
-  .cv-proj__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.7rem; }
-  .cv-proj__name { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600; color: var(--ink); }
-  .cv-proj__name i { color: var(--accent); margin-right: 0.4em; }
-  .cv-proj__arrow { color: var(--ink-faint); transition: transform 0.15s ease, color 0.15s ease; }
-  .cv-proj:hover .cv-proj__arrow { color: var(--accent); transform: translate(2px, -2px); }
-  .cv-proj__desc { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.9rem; flex: 1; }
-  .cv-proj__stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .cv-proj__lang { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-faint); background: var(--bg-subtle); border: 1px solid var(--line); border-radius: 4px; padding: 0.12rem 0.4rem; }
-
   /* Focus / expertise list */
   .cv-focus { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem 1.6rem; }
   .cv-focus__item {
@@ -469,13 +452,6 @@
   }
   .cv-focus__item i { color: var(--accent); margin-top: 0.2rem; }
   .cv-focus__item b { color: var(--ink); font-weight: 600; }
-
-  /* Owner note */
-  .cv-note {
-    background: var(--bg-subtle); border: 1px dashed var(--line); border-radius: 10px; padding: 1rem 1.2rem;
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-faint); line-height: 1.6;
-  }
-  .cv-note b { color: var(--ink-soft); }
 
   /* Contact */
   .cv-contact { display: flex; flex-wrap: wrap; gap: 0.7rem; }
@@ -502,49 +478,19 @@
 
 <script>
   /* =====================================================================
-     Theme controller, accent picker, and English/Chinese i18n
+     Theme controller + accent picker, mounted into the masthead headline
      ===================================================================== */
   (function () {
     var root = document.documentElement;
-    var STORE = { theme: 'xw-theme', accent: 'xw-accent', lang: 'xw-lang' };
+    var STORE = { theme: 'xw-theme', accent: 'xw-accent' };
 
     function get(key, fallback) { try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; } }
     function set(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
 
     var state = {
       theme:  get(STORE.theme, root.getAttribute('data-theme') || 'light'),
-      accent: get(STORE.accent, 'graphite'),
-      lang:   get(STORE.lang, 'en')
+      accent: get(STORE.accent, 'graphite')
     };
-
-    /* ---- i18n: nav labels + UI chrome -------------------------------- */
-    var NAV = {
-      'Home':     { en: 'Home',     zh: '首页' },
-      'Posts':    { en: 'Posts',    zh: '文章' },
-      'Projects': { en: 'Projects', zh: '项目' },
-      'Gallery':  { en: 'Gallery',  zh: '相册' },
-      'CV':       { en: 'CV',       zh: '简历' },
-      'About':    { en: 'About',    zh: '关于' }
-    };
-
-    function applyLang(lang) {
-      root.setAttribute('data-lang', lang);
-      document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
-
-      /* Navigation links */
-      var links = document.querySelectorAll('.greedy-nav .visible-links a, .greedy-nav .hidden-links a');
-      links.forEach(function (a) {
-        var key = a.getAttribute('data-nav-key');
-        if (!key) { key = a.textContent.trim(); a.setAttribute('data-nav-key', key); }
-        if (NAV[key]) a.textContent = NAV[key][lang];
-      });
-
-      /* Any element opted into translation via data-i18n-en / data-i18n-zh */
-      document.querySelectorAll('[data-i18n-en]').forEach(function (el) {
-        var val = el.getAttribute('data-i18n-' + lang);
-        if (val !== null && val !== undefined) el.textContent = val;
-      });
-    }
 
     function applyTheme(t) { root.setAttribute('data-theme', t); }
     function applyAccent(a) { root.setAttribute('data-accent', a); }
@@ -552,7 +498,6 @@
     applyTheme(state.theme);
     applyAccent(state.accent);
 
-    /* ---- Build the floating control dock ----------------------------- */
     var ACCENTS = [
       { id: 'graphite', color: '#5b5b5b' },
       { id: 'blue',     color: '#2563eb' },
@@ -562,54 +507,41 @@
       { id: 'rose',     color: '#e11d48' }
     ];
 
-    var UI = {
-      appearance: { en: 'Appearance', zh: '外观' },
-      light:      { en: 'Light',      zh: '浅色' },
-      dark:       { en: 'Dark',       zh: '深色' },
-      accent:     { en: 'Accent',     zh: '主题色' },
-      language:   { en: 'Language',   zh: '语言' }
-    };
+    function buildSettings() {
+      var host = document.querySelector('.greedy-nav') ||
+                 document.querySelector('.masthead__inner-wrap') ||
+                 document.body;
 
-    function buildDock() {
-      var dock = document.createElement('div');
-      dock.className = 'xw-dock';
-      dock.innerHTML =
-        '<button class="xw-dock__toggle" aria-label="Site settings" aria-expanded="false">&#9881;</button>' +
-        '<div class="xw-dock__panel" role="dialog" aria-label="Site settings">' +
-          '<div class="xw-dock__group">' +
-            '<span class="xw-dock__label" data-ui="appearance"></span>' +
+      var wrap = document.createElement('div');
+      wrap.className = 'xw-settings';
+      wrap.innerHTML =
+        '<button class="xw-settings__btn" aria-label="Site settings" aria-expanded="false" title="Theme settings">&#9881;</button>' +
+        '<div class="xw-settings__panel" role="dialog" aria-label="Site settings">' +
+          '<div class="xw-group">' +
+            '<span class="xw-group__label">Appearance</span>' +
             '<div class="xw-seg" data-role="theme">' +
-              '<button data-val="light" aria-pressed="false"><span>&#9728;</span><span data-ui="light"></span></button>' +
-              '<button data-val="dark" aria-pressed="false"><span>&#9789;</span><span data-ui="dark"></span></button>' +
+              '<button data-val="light" aria-pressed="false"><span>&#9728;</span><span>Light</span></button>' +
+              '<button data-val="dark" aria-pressed="false"><span>&#9789;</span><span>Dark</span></button>' +
             '</div>' +
           '</div>' +
-          '<div class="xw-dock__group">' +
-            '<span class="xw-dock__label" data-ui="accent"></span>' +
+          '<div class="xw-group">' +
+            '<span class="xw-group__label">Accent</span>' +
             '<div class="xw-swatches" data-role="accent"></div>' +
           '</div>' +
-          '<div class="xw-dock__group">' +
-            '<span class="xw-dock__label" data-ui="language"></span>' +
-            '<div class="xw-seg" data-role="lang">' +
-              '<button data-val="en" aria-pressed="false">EN</button>' +
-              '<button data-val="zh" aria-pressed="false">&#20013;&#25991;</button>' +
-            '</div>' +
-          '</div>' +
         '</div>';
-      document.body.appendChild(dock);
+      host.appendChild(wrap);
 
-      var toggle = dock.querySelector('.xw-dock__toggle');
-      var panel = dock.querySelector('.xw-dock__panel');
-      toggle.addEventListener('click', function (e) {
+      var btn = wrap.querySelector('.xw-settings__btn');
+      btn.addEventListener('click', function (e) {
         e.stopPropagation();
-        var open = dock.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var open = wrap.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
       document.addEventListener('click', function (e) {
-        if (!dock.contains(e.target)) { dock.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+        if (!wrap.contains(e.target)) { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
       });
 
-      /* Accent swatches */
-      var swWrap = dock.querySelector('[data-role="accent"]');
+      var swWrap = wrap.querySelector('[data-role="accent"]');
       ACCENTS.forEach(function (a) {
         var b = document.createElement('button');
         b.className = 'xw-swatch';
@@ -620,49 +552,30 @@
         swWrap.appendChild(b);
       });
 
-      /* Sync pressed states */
       function sync() {
-        dock.querySelectorAll('[data-role="theme"] button').forEach(function (b) {
+        wrap.querySelectorAll('[data-role="theme"] button').forEach(function (b) {
           b.setAttribute('aria-pressed', b.getAttribute('data-val') === state.theme ? 'true' : 'false');
         });
-        dock.querySelectorAll('[data-role="lang"] button').forEach(function (b) {
-          b.setAttribute('aria-pressed', b.getAttribute('data-val') === state.lang ? 'true' : 'false');
-        });
-        dock.querySelectorAll('[data-role="accent"] button').forEach(function (b) {
+        wrap.querySelectorAll('[data-role="accent"] button').forEach(function (b) {
           b.setAttribute('aria-pressed', b.getAttribute('data-val') === state.accent ? 'true' : 'false');
         });
       }
 
-      function labelDock(lang) {
-        dock.querySelectorAll('[data-ui]').forEach(function (el) {
-          var k = el.getAttribute('data-ui');
-          if (UI[k]) el.textContent = UI[k][lang];
-        });
-        toggle.setAttribute('aria-label', UI.appearance[lang] === undefined ? 'Settings' : (lang === 'zh' ? '设置' : 'Settings'));
-      }
-
-      dock.querySelector('[data-role="theme"]').addEventListener('click', function (e) {
+      wrap.querySelector('[data-role="theme"]').addEventListener('click', function (e) {
         var b = e.target.closest('button'); if (!b) return;
         state.theme = b.getAttribute('data-val'); set(STORE.theme, state.theme); applyTheme(state.theme); sync();
-      });
-      dock.querySelector('[data-role="lang"]').addEventListener('click', function (e) {
-        var b = e.target.closest('button'); if (!b) return;
-        state.lang = b.getAttribute('data-val'); set(STORE.lang, state.lang); applyLang(state.lang); labelDock(state.lang); sync();
       });
       swWrap.addEventListener('click', function (e) {
         var b = e.target.closest('button'); if (!b) return;
         state.accent = b.getAttribute('data-val'); set(STORE.accent, state.accent); applyAccent(state.accent); sync();
       });
 
-      labelDock(state.lang);
       sync();
     }
 
-    /* ---- Boot -------------------------------------------------------- */
     function boot() {
       if (/^\/cv\/?$/.test(location.pathname)) document.body.classList.add('is-cv');
-      applyLang(state.lang);
-      buildDock();
+      buildSettings();
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

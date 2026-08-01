@@ -1,6 +1,7 @@
 ---
 title: "Hello Xingchen"
-date: 2025-08-30T15:35:00-04:00
+date: 2025-08-30
+excerpt: "A quick multi-language 'hello' — Python, C++, C, Java, JavaScript, and Rust."
 categories:
   - blog
 tags:

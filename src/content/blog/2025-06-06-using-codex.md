@@ -1,9 +1,13 @@
 ---
 title: "Using Codex to Automate Updates"
-date: 2025-06-06T00:00:00-04:00
+date: 2025-06-06
+excerpt: "A short guide to automating GitHub workflows with Codex."
 categories:
   - blog
   - codex
+tags:
+  - codex
+  - automation
 ---
 
 Codex helps you automate your GitHub workflows with the power of OpenAI models. Below is a short guide for getting started.

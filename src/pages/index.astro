@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const features = [
+  {
+    icon: 'fas fa-eye',
+    title: 'Image Algorithms R&D',
+    body: 'Deep expertise in computational imaging, computer vision, and image processing pipelines — from algorithm design to production-grade deployment.',
+  },
+  {
+    icon: 'fas fa-sitemap',
+    title: 'Technical Leadership',
+    body: 'Leading cross-functional engineering teams, driving architecture decisions, and delivering complex imaging and AI-driven products at scale.',
+  },
+  {
+    icon: 'fas fa-pen-nib',
+    title: 'Research & Writing',
+    body: 'Sharing insights on algorithms, engineering practices, and the craft of technical project management.',
+    link: { href: '/posts/', label: 'Read posts →' },
+  },
+];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="hero__inner">
+      <span class="hero__kicker"><span class="dot"></span>Image Algorithms · Computer Vision · R&D</span>
+      <h1 class="hero__title">{SITE.name}</h1>
+      <p class="hero__tagline">
+        Building intelligent visual systems and leading high-performance engineering teams —
+        from algorithm prototype to production.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/cv/">View CV</a>
+        <a class="btn btn--light-outline" href="/about/">About Me</a>
+        <a class="btn btn--light-outline" href="/posts/">Posts</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section__intro" style="font-size:1.15rem; max-width:70ch; margin:0 auto; text-align:center;">
+        Welcome — I'm a technical leader specialising in image algorithms and computer vision R&D.
+        I enjoy bridging deep algorithmic work with practical product delivery and clear
+        engineering communication.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cards">
+        {features.map((f) => (
+          <article class="card" data-reveal>
+            <span class="card__icon"><i class={f.icon}></i></span>
+            <h2 class="card__title">{f.title}</h2>
+            <p class="card__body">{f.body}</p>
+            {f.link && <a class="card__link" href={f.link.href}>{f.link.label}</a>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="section" style="padding-top:0;">
+      <div class="wrap">
+        <div class="section__head" style="display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <span class="section__eyebrow">Latest</span>
+            <h2 class="section__title">From the blog</h2>
+          </div>
+          <a class="card__link" href="/posts/">All posts →</a>
+        </div>
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li class="post-list__item" data-reveal>
+              <div class="post-list__meta">
+                <time datetime={post.data.date.toISOString()}>{dateFmt.format(post.data.date)}</time>
+                {post.data.categories.map((c) => <span class="tag">{c}</span>)}
+              </div>
+              <h3 class="post-list__title"><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3>
+              {post.data.excerpt && <p class="post-list__excerpt">{post.data.excerpt}</p>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout title="Posts" description="Writing on image algorithms, computer vision, and engineering.">
+  <div class="wrap wrap--narrow" style="padding-top:3rem;">
+    <div class="section__head">
+      <span class="section__eyebrow">Blog</span>
+      <h1 class="section__title" style="font-size:2.2rem;">Posts</h1>
+      <p class="section__intro">Notes on image algorithms, computer vision, engineering, and tooling.</p>
+    </div>
+
+    {posts.length === 0 ? (
+      <p>No posts yet — check back soon.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-list__item" data-reveal>
+            <div class="post-list__meta">
+              <time datetime={post.data.date.toISOString()}>{dateFmt.format(post.data.date)}</time>
+              {post.data.categories.map((c) => <span class="tag">{c}</span>)}
+            </div>
+            <h2 class="post-list__title"><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
+            {post.data.excerpt && <p class="post-list__excerpt">{post.data.excerpt}</p>}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</BaseLayout>

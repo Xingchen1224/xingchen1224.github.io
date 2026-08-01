@@ -1,10 +1,8 @@
 ---
 title: "Super AI 2026 EXPO"
 date: 2026-01-01
-layout: single
-author_profile: true
 excerpt: "Photos from the Super AI 2026 EXPO."
-classes: wide
+wide: true
 categories:
   - gallery
 tags:

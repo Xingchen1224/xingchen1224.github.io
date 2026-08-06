@@ -40,7 +40,8 @@ function isActive(href: string) {
         aria-expanded="false"
         title="Theme settings"
       >&#9881;</button>
-      <div class="xw-settings__panel" role="dialog" aria-label="Site settings">
+      <!-- Not role="dialog": the panel is non-modal and traps no focus. -->
+      <div class="xw-settings__panel" role="group" aria-label="Site settings">
         <div class="xw-group">
           <span class="xw-group__label">Appearance</span>
           <div class="xw-seg" data-role="theme">

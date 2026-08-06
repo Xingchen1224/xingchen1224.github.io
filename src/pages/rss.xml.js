@@ -1,21 +1,20 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getSortedPosts, postUrl } from '../lib/posts';
 import { SITE } from '../consts';
 
 export async function GET(context) {
-  const posts = (await getCollection('blog')).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-  );
+  const posts = await getSortedPosts();
   return rss({
     title: SITE.title,
     description: SITE.description,
     site: context.site,
+    customData: `<language>${SITE.locale.toLowerCase()}</language>`,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.excerpt,
       categories: post.data.categories,
-      link: `/posts/${post.id}/`,
+      link: postUrl(post),
     })),
   });
 }

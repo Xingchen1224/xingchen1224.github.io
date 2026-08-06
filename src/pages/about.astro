@@ -1,24 +1,35 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import avatar from '../assets/bio-photo.jpg';
 import { SITE, SOCIAL } from '../consts';
 ---
 
 <BaseLayout title="About" description="Image Algorithms R&D · Technical Project Leader">
-  <div class="wrap wrap--narrow" style="padding-top:3rem;">
+  <div class="wrap wrap--narrow page-top">
     <div class="author-card" data-reveal>
-      <img class="author-card__avatar" src={SITE.author.avatar} alt={SITE.author.name} width="84" height="84" />
+      <Image
+        class="author-card__avatar"
+        src={avatar}
+        alt={SITE.author.name}
+        width={84}
+        height={84}
+        densities={[1, 2]}
+        loading="eager"
+      />
       <div>
         <p class="author-card__name">{SITE.author.name}</p>
         <p class="author-card__bio">{SITE.author.bio}</p>
         <div class="author-card__links">
-          <a href={SOCIAL.github} target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href={SOCIAL.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href={SOCIAL.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" /></a>
+          <a href={SOCIAL.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
         </div>
       </div>
     </div>
 
     <article class="prose">
-      <h1 style="font-size:2.2rem;">About {SITE.author.name}</h1>
+      <h1 class="prose__title">About {SITE.author.name}</h1>
 
       <h2>Professional Profile</h2>
       <p>

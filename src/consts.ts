@@ -4,9 +4,12 @@ export const SITE = {
   description: 'Image Algorithms R&D / Technical Project Leader',
   url: 'https://xingchen1224.github.io',
   locale: 'en-US',
+  // Social preview card. Kept in `public/` (not `src/assets/`) so the URL is
+  // stable across builds — crawlers cache it, a content hash would not do.
+  ogImage: '/assets/images/og-default.png',
+  ogImageSize: { width: 1200, height: 630 },
   author: {
     name: 'Xingchen Wang',
-    avatar: '/assets/images/bio-photo.jpg',
     bio: 'Image Algorithms R&D / Technical Project Leader',
   },
 } as const;

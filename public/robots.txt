@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xingchen1224.github.io/sitemap-index.xml

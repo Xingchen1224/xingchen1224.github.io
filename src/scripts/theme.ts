@@ -33,16 +33,25 @@ export function initTheme(): void {
   applyAccent(state.accent);
 
   const btn = wrap.querySelector<HTMLButtonElement>('.xw-settings__btn');
+
+  function setOpen(open: boolean) {
+    wrap!.classList.toggle('open', open);
+    btn?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
   btn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    const open = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    setOpen(!wrap.classList.contains('open'));
   });
   document.addEventListener('click', (e) => {
-    if (!wrap.contains(e.target as Node)) {
-      wrap.classList.remove('open');
-      btn?.setAttribute('aria-expanded', 'false');
-    }
+    if (!wrap.contains(e.target as Node)) setOpen(false);
+  });
+  // Escape closes the panel and hands focus back to the button that opened it,
+  // so keyboard users aren't stranded inside a dismissed popup.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !wrap.classList.contains('open')) return;
+    setOpen(false);
+    btn?.focus();
   });
 
   function sync() {

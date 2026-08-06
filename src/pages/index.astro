@@ -1,27 +1,30 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import type { IconName } from '../lib/icons';
+import { getSortedPosts, formatDate, postUrl } from '../lib/posts';
 import { SITE } from '../consts';
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const posts = (await getSortedPosts()).slice(0, 3);
 
-const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-
-const features = [
+const features: {
+  icon: IconName;
+  title: string;
+  body: string;
+  link?: { href: string; label: string };
+}[] = [
   {
-    icon: 'fas fa-eye',
+    icon: 'eye',
     title: 'Image Algorithms R&D',
     body: 'Deep expertise in computational imaging, computer vision, and image processing pipelines — from algorithm design to production-grade deployment.',
   },
   {
-    icon: 'fas fa-sitemap',
+    icon: 'sitemap',
     title: 'Technical Leadership',
     body: 'Leading cross-functional engineering teams, driving architecture decisions, and delivering complex imaging and AI-driven products at scale.',
   },
   {
-    icon: 'fas fa-pen-nib',
+    icon: 'pen-nib',
     title: 'Research & Writing',
     body: 'Sharing insights on algorithms, engineering practices, and the craft of technical project management.',
     link: { href: '/posts/', label: 'Read posts →' },
@@ -48,7 +51,7 @@ const features = [
 
   <section class="section">
     <div class="wrap">
-      <p class="section__intro" style="font-size:1.15rem; max-width:70ch; margin:0 auto; text-align:center;">
+      <p class="section__intro section__intro--lead">
         Welcome — I'm a technical leader specialising in image algorithms and computer vision R&D.
         I enjoy bridging deep algorithmic work with practical product delivery and clear
         engineering communication.
@@ -56,12 +59,12 @@ const features = [
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="section section--tight">
     <div class="wrap">
       <div class="cards">
         {features.map((f) => (
           <article class="card" data-reveal>
-            <span class="card__icon"><i class={f.icon}></i></span>
+            <span class="card__icon"><Icon name={f.icon} /></span>
             <h2 class="card__title">{f.title}</h2>
             <p class="card__body">{f.body}</p>
             {f.link && <a class="card__link" href={f.link.href}>{f.link.label}</a>}
@@ -72,9 +75,9 @@ const features = [
   </section>
 
   {posts.length > 0 && (
-    <section class="section" style="padding-top:0;">
+    <section class="section section--tight">
       <div class="wrap">
-        <div class="section__head" style="display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+        <div class="section__head section__head--split">
           <div>
             <span class="section__eyebrow">Latest</span>
             <h2 class="section__title">From the blog</h2>
@@ -85,10 +88,10 @@ const features = [
           {posts.map((post) => (
             <li class="post-list__item" data-reveal>
               <div class="post-list__meta">
-                <time datetime={post.data.date.toISOString()}>{dateFmt.format(post.data.date)}</time>
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
                 {post.data.categories.map((c) => <span class="tag">{c}</span>)}
               </div>
-              <h3 class="post-list__title"><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3>
+              <h3 class="post-list__title"><a href={postUrl(post)}>{post.data.title}</a></h3>
               {post.data.excerpt && <p class="post-list__excerpt">{post.data.excerpt}</p>}
             </li>
           ))}

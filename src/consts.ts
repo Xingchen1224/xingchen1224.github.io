@@ -15,7 +15,6 @@ export const SITE = {
 } as const;
 
 export const SOCIAL = {
-  github: 'https://github.com/Xingchen1224',
   linkedin: 'https://www.linkedin.com/in/xingchen-wang',
 } as const;
 
@@ -23,5 +22,17 @@ export const NAV = [
   { title: 'Home', href: '/' },
   { title: 'Posts', href: '/posts/' },
   { title: 'CV', href: '/cv/' },
-  { title: 'About', href: '/about/' },
+] as const;
+
+/**
+ * Accent swatches shown in the header. The `hex` is only the dot the user
+ * clicks — the palette each one selects lives in `[data-accent]` in global.css.
+ */
+export const ACCENTS = [
+  { id: 'cyan', name: 'Cyan', hex: '#22d3ee' },
+  { id: 'blue', name: 'Blue', hex: '#2563eb' },
+  { id: 'emerald', name: 'Emerald', hex: '#059669' },
+  { id: 'violet', name: 'Violet', hex: '#7c3aed' },
+  { id: 'amber', name: 'Amber', hex: '#d97706' },
+  { id: 'rose', name: 'Rose', hex: '#e11d48' },
 ] as const;

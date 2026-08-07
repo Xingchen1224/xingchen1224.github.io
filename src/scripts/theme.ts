@@ -32,29 +32,13 @@ export function initTheme(): void {
   applyTheme(state.theme);
   applyAccent(state.accent);
 
-  const btn = wrap.querySelector<HTMLButtonElement>('.xw-settings__btn');
-
-  function setOpen(open: boolean) {
-    wrap!.classList.toggle('open', open);
-    btn?.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-
-  btn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setOpen(!wrap.classList.contains('open'));
-  });
-  document.addEventListener('click', (e) => {
-    if (!wrap.contains(e.target as Node)) setOpen(false);
-  });
-  // Escape closes the panel and hands focus back to the button that opened it,
-  // so keyboard users aren't stranded inside a dismissed popup.
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape' || !wrap.classList.contains('open')) return;
-    setOpen(false);
-    btn?.focus();
-  });
-
+  // The controls sit directly in the header, so there is no popup to open,
+  // dismiss, or trap focus in — just two groups of toggle buttons.
   function sync() {
+    // drives the sliding thumb in .xw-seg::before
+    wrap!
+      .querySelector<HTMLElement>('[data-role="theme"]')
+      ?.setAttribute('data-active', state.theme);
     wrap!.querySelectorAll<HTMLButtonElement>('[data-role="theme"] button').forEach((b) => {
       b.setAttribute('aria-pressed', b.dataset.val === state.theme ? 'true' : 'false');
     });

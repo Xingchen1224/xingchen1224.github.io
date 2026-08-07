@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import type { IconName } from '../lib/icons';
-import { SOCIAL } from '../consts';
+import avatar from '../assets/bio-photo.jpg';
+import { SITE, SOCIAL } from '../consts';
 
 const skills: { icon: IconName; title: string; tags: string[] }[] = [
   {
@@ -37,7 +39,7 @@ const focus = [
 ];
 ---
 
-<BaseLayout title="Curriculum Vitae" description="Image Algorithms R&D · Technical Project Leader">
+<BaseLayout title="CV" description="Xingchen Wang — Image Algorithms R&D · Technical Project Leader">
   <div class="cv">
     <section class="cv-hero" data-reveal>
       <div class="cv-hero__bar">
@@ -48,20 +50,30 @@ const focus = [
       </div>
       <div class="cv-hero__body">
         <div class="cv-hero__prompt"><span class="cv-cmd">$</span> whoami --profile</div>
-        <h1 class="cv-hero__name">Xingchen Wang</h1>
-        <p class="cv-hero__role">
-          Image Algorithms R&amp;D <span class="cv-sep">/</span> Technical Project Leader
-        </p>
+        <div class="cv-hero__id">
+          <Image
+            class="cv-hero__avatar"
+            src={avatar}
+            alt={SITE.author.name}
+            width={92}
+            height={92}
+            densities={[1, 2]}
+            loading="eager"
+          />
+          <div>
+            <h1 class="cv-hero__name">Xingchen Wang</h1>
+            <p class="cv-hero__role">
+              Image Algorithms R&amp;D <span class="cv-sep">/</span> Technical Project Leader
+            </p>
+          </div>
+        </div>
         <div class="cv-hero__meta">
           <span><Icon name="microchip" />Computer Vision</span>
           <span><Icon name="code" />C++ / Python</span>
           <span><Icon name="globe" />Global</span>
         </div>
         <div class="cv-actions">
-          <a class="cv-btn cv-btn--solid" href={SOCIAL.github} target="_blank" rel="noopener">
-            <Icon name="github" />GitHub
-          </a>
-          <a class="cv-btn cv-btn--ghost" href={SOCIAL.linkedin} target="_blank" rel="noopener">
+          <a class="cv-btn cv-btn--solid" href={SOCIAL.linkedin} target="_blank" rel="noopener">
             <Icon name="linkedin" />LinkedIn
           </a>
         </div>
@@ -79,6 +91,12 @@ const focus = [
         computer vision, and computational imaging. I focus on taking algorithms from prototype to
         production-quality software, and on leading the engineering work that turns research into
         reliable systems.
+      </p>
+      <p class="cv-body">
+        My work sits at the intersection of rigorous algorithmic thinking and practical product
+        delivery — designing imaging pipelines, directing R&amp;D initiatives, and helping teams ship
+        high-quality visual systems at scale. I am driven by hard problems in computational imaging
+        and enjoy turning cutting-edge research into reliable software.
       </p>
     </section>
 
@@ -115,16 +133,5 @@ const focus = [
       </div>
     </section>
 
-    <section class="cv-section" data-reveal>
-      <div class="cv-section__head">
-        <span class="cv-section__idx">04</span>
-        <h2 class="cv-section__title">Contact</h2>
-        <span class="cv-section__rule"></span>
-      </div>
-      <div class="cv-contact">
-        <a href={SOCIAL.github} target="_blank" rel="noopener"><Icon name="github" />github.com/Xingchen1224</a>
-        <a href={SOCIAL.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />linkedin.com/in/xingchen-wang</a>
-      </div>
-    </section>
   </div>
 </BaseLayout>

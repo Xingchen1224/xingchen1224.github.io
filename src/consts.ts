@@ -18,18 +18,26 @@ export const SOCIAL = {
   linkedin: 'https://www.linkedin.com/in/xingchen-wang',
 } as const;
 
+/**
+ * Kept in two halves so the address never appears as one string in the page
+ * source or the JS bundle — plain `user@host` text is what scrapers look for.
+ * Pages join them at runtime; the PDF and HTML exports assemble it themselves.
+ */
+export const EMAIL = { user: 'xwang95', domain: 'outlook.com' } as const;
+export const emailAddress = () => `${EMAIL.user}@${EMAIL.domain}`;
+
 export const NAV = [
   { title: 'Home', href: '/' },
-  { title: 'Writing', href: '/posts/' },
+  { title: 'Log', href: '/posts/' },
   { title: 'CV', href: '/cv/' },
 ] as const;
 
-/** How I work — shown short on the home page and in full on the CV. */
+/** Philosophies — shown short on the home page and in full on the CV. */
 export const PRINCIPLES = [
   {
-    title: 'Partners with AI',
-    short: 'A teammate, not a tool — I steer the direction and key checkpoints.',
-    long: 'AI is not a tool I pick up now and then; it is a partner I work with every day. Together we get ideas to production quality fast: it brings speed and range, I bring direction and judgement at the checkpoints that matter.',
+    title: 'A team of AI agents',
+    short: 'I steer the direction and checkpoints.',
+    long: 'I work every day with a team of AI agents and tools, as partners rather than instruments. Together we get ideas to production quality fast: they bring speed and range, I bring direction and judgement at the checkpoints that matter.',
   },
   {
     title: 'Minimalism',
@@ -40,5 +48,10 @@ export const PRINCIPLES = [
     title: 'Empathy',
     short: 'Start from the other person’s seat.',
     long: 'I try to see the work from where the user, the reader or the teammate is standing — and design for that, not for how it looks from the inside.',
+  },
+  {
+    title: 'First principles',
+    short: 'Understand how the world works.',
+    long: 'I want to understand the underlying principles of how the world works — which is why I follow data, macroeconomics and company financials.',
   },
 ] as const;

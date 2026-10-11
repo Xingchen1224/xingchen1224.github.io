@@ -8,8 +8,7 @@ export function initTheme(): void {
   if (!btn) return;
 
   const sync = () => {
-    const dark = root.getAttribute('data-theme') === 'dark';
-    btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    btn!.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
   };
 
   btn.addEventListener('click', () => {

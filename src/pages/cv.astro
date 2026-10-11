@@ -2,41 +2,9 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-import type { IconName } from '../lib/icons';
 import avatar from '../assets/bio-photo.jpg';
 import { PRINCIPLES, SITE, SOCIAL } from '../consts';
-
-const skills: { icon: IconName; title: string; tags: string[] }[] = [
-  {
-    icon: 'eye',
-    title: 'Image & Vision',
-    tags: ['Image Algorithms', 'Image Processing', 'Computer Vision', 'Computational Imaging', 'OpenCV'],
-  },
-  {
-    icon: 'terminal',
-    title: 'Languages & Tooling',
-    tags: ['C++', 'Python', 'Shell', 'CMake', 'Git'],
-  },
-  {
-    icon: 'cubes',
-    title: 'Frameworks & Domains',
-    tags: ['JUCE', 'Cross-platform C++', 'Build Systems'],
-  },
-  {
-    icon: 'sitemap',
-    title: 'Leadership',
-    tags: ['Project Leadership', 'R&D Planning', 'Code Review', 'System Design'],
-  },
-];
-
-const focus = [
-  ['Computational imaging', '& image-quality algorithms'],
-  ['Computer vision', '& visual perception systems'],
-  ['Image pipeline architecture', '(RAW, ISP, post-processing)'],
-  ['Algorithm-to-production', 'engineering & tooling'],
-  ['Technical leadership', '& cross-functional teams'],
-  ['System design', '& engineering quality'],
-];
+import { CV, CV_HTML_PATH, CV_PDF_PATH } from '../lib/cv';
 ---
 
 <BaseLayout title="CV" description="Xingchen Wang — Image Algorithms R&D · Technical Project Leader">
@@ -46,69 +14,65 @@ const focus = [
         class="cv-head__avatar"
         src={avatar}
         alt={SITE.author.name}
-        width={96}
-        height={96}
+        width={72}
+        height={72}
         densities={[1, 2]}
         loading="eager"
       />
       <div>
         <h1 class="cv-head__name">{SITE.name}</h1>
         <p class="cv-head__role">Image Algorithms R&amp;D <span aria-hidden="true">/</span> Technical Project Leader</p>
-        <div class="cv-head__links">
-          <a href={SOCIAL.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
-          <span><Icon name="microchip" />Computer Vision</span>
-          <span><Icon name="code" />C++ / Python</span>
+        <div class="cv-head__actions">
+          <a class="cv-head__link" href={SOCIAL.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
+          <a class="cv-head__link" href="#" data-email aria-label="Email"><Icon name="envelope" />Email</a>
+          <a class="cv-head__link" href={CV_PDF_PATH} download="xingchen-wang-cv.pdf"><Icon name="download" />PDF</a>
+          <a class="cv-head__link" href={CV_HTML_PATH} download="xingchen-wang-cv.html"><Icon name="download" />HTML</a>
         </div>
       </div>
+      <p class="print-only cv-head__urls">{SITE.url.replace('https://', '')} · {SOCIAL.linkedin.replace('https://www.', '')} · <span data-email-text></span></p>
     </header>
 
-    <section class="split" data-reveal>
+    <section class="split">
       <h2 class="split__label">Summary</h2>
       <div>
-        <p class="cv-lead">
-          Image algorithms R&amp;D engineer and technical project leader working across image
-          processing, computer vision and computational imaging.
-        </p>
-        <p class="cv-body">
-          I focus on taking algorithms from prototype to production-quality software, and on leading
-          the engineering work that turns research into reliable systems — designing imaging
-          pipelines, directing R&amp;D initiatives and helping teams ship high-quality visual products
-          at scale.
-        </p>
+        <p class="cv-lead">{CV.now}</p>
+        <p class="cv-before"><span>Before</span>{CV.before}</p>
       </div>
     </section>
 
-    <section class="split" data-reveal>
-      <h2 class="split__label">How I work</h2>
-      <dl class="cv-skills">
-        {PRINCIPLES.map((p) => (
-          <div class="cv-skill">
-            <dt>{p.title}</dt>
-            <dd class="cv-body">{p.long}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-
-    <section class="split" data-reveal>
+    <section class="split">
       <h2 class="split__label">Skills</h2>
-      <dl class="cv-skills">
-        {skills.map((s) => (
-          <div class="cv-skill">
-            <dt><Icon name={s.icon} />{s.title}</dt>
-            <dd class="tags">{s.tags.map((t) => <span class="tag">{t}</span>)}</dd>
-          </div>
+      <dl class="kv">
+        {CV.skills.map((r) => (
+          <div class:list={['quiet' in r && 'is-quiet']}><dt>{r.title}</dt><dd>{r.body}</dd></div>
         ))}
       </dl>
     </section>
 
-    <section class="split" data-reveal>
-      <h2 class="split__label">Focus</h2>
-      <ul class="cv-focus">
-        {focus.map(([bold, rest]) => (
-          <li><b>{bold}</b>{rest}</li>
+    <section class="split">
+      <h2 class="split__label">Philosophies</h2>
+      <dl class="kv">
+        {PRINCIPLES.map((p) => (
+          <div><dt>{p.title}</dt><dd>{p.short}</dd></div>
         ))}
-      </ul>
+      </dl>
+    </section>
+
+    <section class="split">
+      <h2 class="split__label">Interests</h2>
+      <dl class="kv">
+        {CV.interests.map((r) => (
+          <div><dt>{r.title}</dt><dd>{r.body}</dd></div>
+        ))}
+      </dl>
     </section>
   </div>
 </BaseLayout>
+
+<script>
+  // The address is assembled here, not written into the HTML (see consts.ts).
+  import { emailAddress } from '../consts';
+  const addr = emailAddress();
+  document.querySelectorAll<HTMLAnchorElement>('[data-email]').forEach((a) => (a.href = `mailto:${addr}`));
+  document.querySelectorAll<HTMLElement>('[data-email-text]').forEach((el) => (el.textContent = addr));
+</script>

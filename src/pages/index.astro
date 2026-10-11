@@ -1,10 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from '../components/Icon.astro';
 import avatar from '../assets/bio-photo.jpg';
 import { getSortedPosts, formatDate, postUrl } from '../lib/posts';
-import { PRINCIPLES, SITE, SOCIAL } from '../consts';
+import { PRINCIPLES, SITE } from '../consts';
 
 const posts = (await getSortedPosts()).slice(0, 3);
 ---
@@ -22,7 +21,7 @@ const posts = (await getSortedPosts()).slice(0, 3);
         </p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="/cv/">View CV</a>
-          <a class="arrow-link" href="/posts/">Read my writing →</a>
+          <a class="arrow-link" href="/posts/">Read my log →</a>
         </div>
       </div>
       <figure class="hero__portrait" data-pixelate>
@@ -40,14 +39,16 @@ const posts = (await getSortedPosts()).slice(0, 3);
 
     <div class="home__band">
       <section>
-        <h2 class="split__label">How I work</h2>
-        <ul class="mini">
-          {PRINCIPLES.map((p) => <li><b>{p.title}</b><span>{p.short}</span></li>)}
-        </ul>
+        <h2 class="split__label">Philosophies</h2>
+        <ol class="mini mini--num">
+          {PRINCIPLES.map((p, i) => (
+            <li><span class="mini__n">0{i + 1}</span><b>{p.title}</b><span>{p.short}</span></li>
+          ))}
+        </ol>
       </section>
 
       <section>
-        <h2 class="split__label"><a href="/posts/">Writing →</a></h2>
+        <h2 class="split__label"><a href="/posts/">Log →</a></h2>
         <ul class="mini">
           {posts.map((post) => (
             <li>
@@ -55,15 +56,6 @@ const posts = (await getSortedPosts()).slice(0, 3);
               <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
             </li>
           ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2 class="split__label">Elsewhere</h2>
-        <ul class="mini mini--links">
-          <li><a href={SOCIAL.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a></li>
-          <li><a href="/cv/"><Icon name="chevron-right" />Curriculum vitae</a></li>
-          <li><a href="/rss.xml"><Icon name="chevron-right" />RSS feed</a></li>
         </ul>
       </section>
     </div>

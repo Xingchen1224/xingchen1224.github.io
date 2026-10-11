@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import avatar from '../assets/bio-photo.jpg';
-import { NAV, SITE } from '../consts';
+import { NAV, SITE, SOCIAL } from '../consts';
 
 const pathname = Astro.url.pathname;
 function isActive(href: string) {
@@ -34,8 +34,15 @@ function isActive(href: string) {
       ))}
     </nav>
 
-    <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
-      <Icon name="sun" class="icon--sun" /><Icon name="moon" class="icon--moon" />
+    <a class="icon-btn header-link" href={SOCIAL.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+      <Icon name="linkedin" />
+    </a>
+
+    <!-- Both states are always visible; the thumb shows which one is on. -->
+    <button class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark mode" data-theme-toggle>
+      <span class="theme-switch__thumb" aria-hidden="true"></span>
+      <Icon name="sun" class="theme-switch__icon" />
+      <Icon name="moon" class="theme-switch__icon" />
     </button>
 
     <button

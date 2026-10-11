@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import avatar from '../assets/bio-photo.jpg';
-import { ACCENTS, NAV, SITE } from '../consts';
+import { NAV, SITE } from '../consts';
 
 const pathname = Astro.url.pathname;
 function isActive(href: string) {
@@ -26,15 +26,6 @@ function isActive(href: string) {
       <span class="site-brand__name">{SITE.name}</span>
     </a>
 
-    <button
-      class="nav-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      aria-controls="site-nav"
-      data-nav-toggle
-    >&#9776;</button>
-
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       {NAV.map((item) => (
         <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
@@ -43,25 +34,17 @@ function isActive(href: string) {
       ))}
     </nav>
 
-    <!-- Laid out flat in the bar rather than behind a menu: two clicks became one. -->
-    <div class="xw-settings" data-settings>
-      <div class="xw-seg" data-role="theme" data-active="dark" role="group" aria-label="Appearance">
-        <button type="button" data-val="light" aria-pressed="false" aria-label="Light theme" title="Light"><Icon name="sun" /></button>
-        <button type="button" data-val="dark" aria-pressed="false" aria-label="Dark theme" title="Dark"><Icon name="moon" /></button>
-      </div>
-      <div class="xw-swatches" data-role="accent" role="group" aria-label="Accent colour">
-        {ACCENTS.map((a) => (
-          <button
-            type="button"
-            class="xw-swatch"
-            data-val={a.id}
-            style={`background:${a.hex}`}
-            aria-label={`${a.name} accent`}
-            title={a.name}
-            aria-pressed="false"
-          ></button>
-        ))}
-      </div>
-    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
+      <Icon name="sun" class="icon--sun" /><Icon name="moon" class="icon--moon" />
+    </button>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >&#9776;</button>
   </div>
 </header>

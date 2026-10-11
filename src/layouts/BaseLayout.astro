@@ -3,7 +3,6 @@
 // rules with a unicode-range, so a latin-only page downloads exactly one file
 // per family — and none of it costs a third-party connection.
 import '@fontsource-variable/inter/wght.css';
-import '@fontsource-variable/space-grotesk/wght.css';
 import '@fontsource-variable/jetbrains-mono/wght.css';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
@@ -102,10 +101,7 @@ const jsonLd =
         try {
           var t = localStorage.getItem('xw-theme') ||
             (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-          var a = localStorage.getItem('xw-accent') || 'cyan';
-          var r = document.documentElement;
-          r.setAttribute('data-theme', t);
-          r.setAttribute('data-accent', a);
+          document.documentElement.setAttribute('data-theme', t);
         } catch (e) {}
       })();
     </script>
@@ -123,9 +119,11 @@ const jsonLd =
       import { initTheme } from '../scripts/theme';
       import { initReveal } from '../scripts/reveal';
       import { initNav } from '../scripts/nav';
+      import { initPixelate } from '../scripts/pixelate';
       initTheme();
       initReveal();
       initNav();
+      initPixelate();
     </script>
   </body>
 </html>

@@ -1,8 +1,8 @@
 # xingchen1224.github.io
 
 Personal website of **Xingchen Wang** — Image Algorithms R&D / Technical Project Leader.
-Built with [Astro](https://astro.build) featuring a futuristic glass + neon design, a
-light/dark theme toggle, a six-colour accent picker, and scroll-reveal animations.
+Built with [Astro](https://astro.build) — a quiet, editorial design (warm paper, one teal
+accent, hairlines instead of boxes) with a light/dark toggle and subtle scroll-reveal.
 
 ## Tech stack
 
@@ -23,8 +23,8 @@ src/
   content/blog/         Blog posts (Markdown)
   layouts/              BaseLayout, page shell + SEO + JSON-LD
   lib/                  posts.ts (sorting, slugs, dates), icons.ts (SVG paths)
-  pages/                Routes: index, about, cv, posts/, 404, rss.xml
-  scripts/              Theme switcher, scroll-reveal, mobile nav
+  pages/                Routes: index, cv, posts/, 404, rss.xml
+  scripts/              Theme toggle, scroll-reveal, mobile nav
   styles/global.css     Design tokens + component styles
   consts.ts             Site metadata, social links, navigation
   content.config.ts     Blog collection schema

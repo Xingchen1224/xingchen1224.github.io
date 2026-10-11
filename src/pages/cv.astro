@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import type { IconName } from '../lib/icons';
 import avatar from '../assets/bio-photo.jpg';
-import { SITE, SOCIAL } from '../consts';
+import { PRINCIPLES, SITE, SOCIAL } from '../consts';
 
 const skills: { icon: IconName; title: string; tags: string[] }[] = [
   {
@@ -40,98 +40,75 @@ const focus = [
 ---
 
 <BaseLayout title="CV" description="Xingchen Wang — Image Algorithms R&D · Technical Project Leader">
-  <div class="cv">
-    <section class="cv-hero" data-reveal>
-      <div class="cv-hero__bar">
-        <span class="cv-hero__dot cv-hero__dot--r"></span>
-        <span class="cv-hero__dot cv-hero__dot--y"></span>
-        <span class="cv-hero__dot cv-hero__dot--g"></span>
-        <span class="cv-hero__file">xingchen_wang — curriculum_vitae</span>
-      </div>
-      <div class="cv-hero__body">
-        <div class="cv-hero__prompt"><span class="cv-cmd">$</span> whoami --profile</div>
-        <div class="cv-hero__id">
-          <Image
-            class="cv-hero__avatar"
-            src={avatar}
-            alt={SITE.author.name}
-            width={92}
-            height={92}
-            densities={[1, 2]}
-            loading="eager"
-          />
-          <div>
-            <h1 class="cv-hero__name">Xingchen Wang</h1>
-            <p class="cv-hero__role">
-              Image Algorithms R&amp;D <span class="cv-sep">/</span> Technical Project Leader
-            </p>
-          </div>
-        </div>
-        <div class="cv-hero__meta">
+  <div class="wrap wrap--mid page-top">
+    <header class="cv-head">
+      <Image
+        class="cv-head__avatar"
+        src={avatar}
+        alt={SITE.author.name}
+        width={96}
+        height={96}
+        densities={[1, 2]}
+        loading="eager"
+      />
+      <div>
+        <h1 class="cv-head__name">{SITE.name}</h1>
+        <p class="cv-head__role">Image Algorithms R&amp;D <span aria-hidden="true">/</span> Technical Project Leader</p>
+        <div class="cv-head__links">
+          <a href={SOCIAL.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
           <span><Icon name="microchip" />Computer Vision</span>
           <span><Icon name="code" />C++ / Python</span>
-          <span><Icon name="globe" />Global</span>
         </div>
-        <div class="cv-actions">
-          <a class="cv-btn cv-btn--solid" href={SOCIAL.linkedin} target="_blank" rel="noopener">
-            <Icon name="linkedin" />LinkedIn
-          </a>
-        </div>
+      </div>
+    </header>
+
+    <section class="split" data-reveal>
+      <h2 class="split__label">Summary</h2>
+      <div>
+        <p class="cv-lead">
+          Image algorithms R&amp;D engineer and technical project leader working across image
+          processing, computer vision and computational imaging.
+        </p>
+        <p class="cv-body">
+          I focus on taking algorithms from prototype to production-quality software, and on leading
+          the engineering work that turns research into reliable systems — designing imaging
+          pipelines, directing R&amp;D initiatives and helping teams ship high-quality visual products
+          at scale.
+        </p>
       </div>
     </section>
 
-    <section class="cv-section" data-reveal>
-      <div class="cv-section__head">
-        <span class="cv-section__idx">01</span>
-        <h2 class="cv-section__title">Summary</h2>
-        <span class="cv-section__rule"></span>
-      </div>
-      <p class="cv-lead">
-        Image Algorithms R&amp;D engineer and Technical Project Leader working across image processing,
-        computer vision, and computational imaging. I focus on taking algorithms from prototype to
-        production-quality software, and on leading the engineering work that turns research into
-        reliable systems.
-      </p>
-      <p class="cv-body">
-        My work sits at the intersection of rigorous algorithmic thinking and practical product
-        delivery — designing imaging pipelines, directing R&amp;D initiatives, and helping teams ship
-        high-quality visual systems at scale. I am driven by hard problems in computational imaging
-        and enjoy turning cutting-edge research into reliable software.
-      </p>
+    <section class="split" data-reveal>
+      <h2 class="split__label">How I work</h2>
+      <dl class="cv-skills">
+        {PRINCIPLES.map((p) => (
+          <div class="cv-skill">
+            <dt>{p.title}</dt>
+            <dd class="cv-body">{p.long}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
 
-    <section class="cv-section" data-reveal>
-      <div class="cv-section__head">
-        <span class="cv-section__idx">02</span>
-        <h2 class="cv-section__title">Technical Skills</h2>
-        <span class="cv-section__rule"></span>
-      </div>
-      <div class="cv-skills">
+    <section class="split" data-reveal>
+      <h2 class="split__label">Skills</h2>
+      <dl class="cv-skills">
         {skills.map((s) => (
           <div class="cv-skill">
-            <div class="cv-skill__title"><Icon name={s.icon} />{s.title}</div>
-            <div class="cv-tags">
-              {s.tags.map((t) => <span class="cv-tag">{t}</span>)}
-            </div>
+            <dt><Icon name={s.icon} />{s.title}</dt>
+            <dd class="tags">{s.tags.map((t) => <span class="tag">{t}</span>)}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </section>
 
-    <section class="cv-section" data-reveal>
-      <div class="cv-section__head">
-        <span class="cv-section__idx">03</span>
-        <h2 class="cv-section__title">Areas of Focus</h2>
-        <span class="cv-section__rule"></span>
-      </div>
-      <div class="cv-focus">
+    <section class="split" data-reveal>
+      <h2 class="split__label">Focus</h2>
+      <ul class="cv-focus">
         {focus.map(([bold, rest]) => (
-          <div class="cv-focus__item">
-            <Icon name="chevron-right" /><span><b>{bold}</b> {rest}</span>
-          </div>
+          <li><b>{bold}</b>{rest}</li>
         ))}
-      </div>
+      </ul>
     </section>
-
   </div>
 </BaseLayout>

@@ -1,10 +1,11 @@
 ---
-import { SITE } from '../consts';
+import { SITE, GOATCOUNTER } from '../consts';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p class="site-footer__copyright">&copy; {year} {SITE.name}</p>
+    {GOATCOUNTER && <p class="site-footer__views" data-views={GOATCOUNTER} hidden />}
   </div>
 </footer>

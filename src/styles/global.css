@@ -314,6 +314,7 @@ table,
 .site-footer a { color: var(--ink-soft); text-decoration: none; }
 .site-footer a:hover { color: var(--accent); }
 .site-footer__copyright { font-size: 0.82rem; margin: 0; }
+.site-footer__views { font-size: 0.82rem; margin: 0; font-variant-numeric: tabular-nums; }
 
 /* =====================================================================
    Buttons & links

@@ -14,6 +14,12 @@ export const SITE = {
   },
 } as const;
 
+/**
+ * GoatCounter site code — the `xxx` in `xxx.goatcounter.com`. Cookie-free,
+ * no consent banner needed. Leave empty to ship the site with no analytics.
+ */
+export const GOATCOUNTER = 'xingchen1224';
+
 export const SOCIAL = {
   linkedin: 'https://www.linkedin.com/in/xingchen-wang',
 } as const;

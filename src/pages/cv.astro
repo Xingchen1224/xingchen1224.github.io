@@ -24,7 +24,7 @@ import { CV, CV_HTML_PATH, CV_PDF_PATH } from '../lib/cv';
         <p class="cv-head__role">Image Algorithms R&amp;D <span aria-hidden="true">/</span> Technical Project Leader</p>
         <div class="cv-head__actions">
           <a class="cv-head__link" href={SOCIAL.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
-          <a class="cv-head__link" href="#" data-email aria-label="Email"><Icon name="envelope" />Email</a>
+          <a class="cv-head__link" href="#" data-email><Icon name="envelope" /><span data-email-text>Email</span></a>
           <a class="cv-head__link" href={CV_PDF_PATH} download="xingchen-wang-cv.pdf"><Icon name="download" />PDF</a>
           <a class="cv-head__link" href={CV_HTML_PATH} download="xingchen-wang-cv.html"><Icon name="download" />HTML</a>
         </div>
@@ -45,6 +45,15 @@ import { CV, CV_HTML_PATH, CV_PDF_PATH } from '../lib/cv';
       <dl class="kv">
         {CV.skills.map((r) => (
           <div class:list={['quiet' in r && 'is-quiet']}><dt>{r.title}</dt><dd>{r.body}</dd></div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="split" id="open-source">
+      <h2 class="split__label">Open source</h2>
+      <dl class="kv">
+        {CV.openSource.map((r) => (
+          <div><dt><a href={r.href} target="_blank" rel="noopener">{r.title}</a></dt><dd>{r.body}</dd></div>
         ))}
       </dl>
     </section>

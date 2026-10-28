@@ -10,12 +10,12 @@ const esc = (s: string) =>
 // Character references: invisible to a reader, not a literal address to a scraper.
 const entities = (s: string) => [...s].map((c) => `&#${c.codePointAt(0)};`).join('');
 
-const rows = (items: readonly { title: string; body: string; quiet?: boolean }[]) =>
+const rows = (items: readonly { title: string; body: string; quiet?: boolean; href?: string }[]) =>
   items
-    .map(
-      (r) =>
-        `<div class="row${r.quiet ? ' quiet' : ''}"><dt>${esc(r.title)}</dt><dd>${esc(r.body)}</dd></div>`,
-    )
+    .map((r) => {
+      const title = r.href ? `<a href="${esc(r.href)}">${esc(r.title)}</a>` : esc(r.title);
+      return `<div class="row${r.quiet ? ' quiet' : ''}"><dt>${title}</dt><dd>${esc(r.body)}</dd></div>`;
+    })
     .join('');
 
 export const GET: APIRoute = () => {
@@ -60,6 +60,7 @@ export const GET: APIRoute = () => {
   </header>
   <section><h2>Summary</h2><div><p class="lead">${esc(CV.now)}</p><p class="before"><b>Before</b>${esc(CV.before)}</p></div></section>
   <section><h2>Skills</h2><dl>${rows(CV.skills)}</dl></section>
+  <section><h2>Open source</h2><dl>${rows(CV.openSource)}</dl></section>
   <section><h2>Philosophies</h2><dl>${rows(principles)}</dl></section>
   <section><h2>Interests</h2><dl>${rows(CV.interests)}</dl></section>
 </main>

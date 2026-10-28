@@ -95,7 +95,7 @@ export const GET: APIRoute = async () => {
   y = beforeY + doc.heightOfString(CV.before, { width: bodyW - 50, lineGap: 1.5 }) + 18;
 
   // ---- label / value sections ---------------------------------------
-  const section = (name: string, items: readonly { title: string; body: string; quiet?: boolean }[]) => {
+  const section = (name: string, items: readonly { title: string; body: string; quiet?: boolean; href?: string }[]) => {
     rule();
     let first = true;
     for (const r of items) {
@@ -111,7 +111,7 @@ export const GET: APIRoute = async () => {
         label(name);
         first = false;
       }
-      doc.font(quiet ? 'Helvetica' : 'Helvetica-Bold').fontSize(size).fillColor(quiet ? COLORS.faint : COLORS.ink).text(r.title, BODY_X, y, { width: ROW_TITLE_W });
+      doc.font(quiet ? 'Helvetica' : 'Helvetica-Bold').fontSize(size).fillColor(quiet ? COLORS.faint : COLORS.ink).text(r.title, BODY_X, y, { width: ROW_TITLE_W, link: r.href });
       doc.font('Helvetica').fontSize(size).fillColor(quiet ? COLORS.faint : COLORS.soft).text(r.body, BODY_X + ROW_TITLE_W + 14, y, { width: bodyW - ROW_TITLE_W - 14, lineGap: 1.5 });
       y += h + 11;
     }
@@ -119,6 +119,7 @@ export const GET: APIRoute = async () => {
   };
 
   section('Skills', CV.skills);
+  section('Open source', CV.openSource);
   section('Philosophies', PRINCIPLES.map((p) => ({ title: p.title, body: p.short })));
   section('Interests', CV.interests);
 

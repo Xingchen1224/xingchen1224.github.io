@@ -18,13 +18,14 @@ function isActive(href: string) {
         class="site-brand__avatar"
         src={avatar}
         alt=""
-        width={30}
-        height={30}
+        width={32}
+        height={32}
         densities={[1, 2]}
         loading="eager"
       />
       <span class="site-brand__name">{SITE.name}</span>
     </a>
+    <a class="site-email" href="#" data-email aria-label="Email"><Icon name="envelope" /><span data-email-text>Email</span></a>
 
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       {NAV.map((item) => (
@@ -55,3 +56,11 @@ function isActive(href: string) {
     >&#9776;</button>
   </div>
 </header>
+
+<script>
+  // The address is assembled here, not written into the HTML (see consts.ts).
+  import { emailAddress } from '../consts';
+  const addr = emailAddress();
+  document.querySelectorAll<HTMLAnchorElement>('[data-email]').forEach((a) => (a.href = `mailto:${addr}`));
+  document.querySelectorAll<HTMLElement>('[data-email-text]').forEach((el) => (el.textContent = addr));
+</script>
